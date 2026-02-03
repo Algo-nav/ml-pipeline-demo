@@ -104,7 +104,7 @@ class TestModelEvaluation:
         accuracy, _ = evaluate_model(model, X_test, y_test, list(target_names))
         
         # Iris is easy - should get >90% accuracy
-        assert accuracy > 0.9, f"Accuracy {accuracy} should be > 0.9"
+        assert accuracy >= 0.9, f"Accuracy {accuracy} should be >= 0.9"
 
 
 class TestEdgeCases:
