@@ -11,6 +11,13 @@ import json
 from datetime import datetime
 
 
+FEATURE_COLS = [
+    "amount", "hour", "day_of_week", "distance_from_home",
+    "distance_from_last_txn", "ratio_to_median", "num_txn_last_24h",
+    "is_foreign", "merchant_risk_score", "card_age_months"
+]
+
+
 def generate_baseline_data(n_samples=5000, fraud_rate=0.05, random_state=42):
     """
     Generate baseline transaction dataset.
