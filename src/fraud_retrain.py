@@ -18,7 +18,7 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
-from fraud_data import generate_new_batch, check_drift, generate_baseline_data, FEATURE_COLS
+from fraud_data import generate_new_batch, check_drift, generate_baseline_data
 from fraud_train import train_model, evaluate_model, FEATURE_COLS
 
 
