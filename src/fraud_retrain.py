@@ -146,12 +146,15 @@ def run_retraining(args):
         if f1_improvement >= min_improvement:
             decision = "deploy"
             reason = f"Challenger F1 improved by {f1_improvement:+.4f} (threshold: {min_improvement})"
-        elif f1_improvement >= 0 and drift_report["dataset_drift"]:
+        elif drift_report["dataset_drift"] and challenger_metrics["f1"] >= 0.8:
             decision = "deploy"
-            reason = f"Drift detected and challenger maintains performance (F1 delta: {f1_improvement:+.4f})"
+            reason = f"Drift detected ({drift_report['drift_share']:.0%} features). Challenger F1 {challenger_metrics['f1']:.4f} meets minimum threshold. Retraining on current distribution is recommended."
+        elif f1_improvement >= 0:
+            decision = "deploy"
+            reason = f"Challenger matches or exceeds champion (F1 delta: {f1_improvement:+.4f})"
         else:
             decision = "skip"
-            reason = f"Challenger did not improve sufficiently (F1 delta: {f1_improvement:+.4f}, threshold: {min_improvement})"
+            reason = f"Challenger did not improve sufficiently (F1 delta: {f1_improvement:+.4f}, threshold: {min_improvement}) and no significant drift detected"
     
     report["decision"] = decision
     report["reason"] = reason
