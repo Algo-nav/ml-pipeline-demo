@@ -123,9 +123,9 @@ def create_space_files():
     R = []
     R.append("---")
     R.append("title: Fraud Detector CI/CD")
-    R.append("emoji: gear")
+    R.append("emoji: \U0001f6e1")
     R.append("colorFrom: red")
-    R.append("colorTo: orange")
+    R.append("colorTo: red")
     R.append("sdk: gradio")
     R.append("sdk_version: 5.29.0")
     R.append("app_file: app.py")
